@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#6757e8">
+<title>ИГРАмматика — Речевой апгрейд</title>
+<style>
+:root{--ink:#202044;--muted:#73738f;--purple:#6757e8;--pink:#ff6e9f;--blue:#45b8ed;--yellow:#ffd45b;--green:#28b889;--bg:#f6f5ff;--card:#fff}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#f4f2ff,#fff8fb 55%,#effaff);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink)}
+button{font:inherit;cursor:pointer;border:0}.wrap{max-width:1040px;margin:auto;padding:22px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.2px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:#fff;font-size:25px;box-shadow:0 8px 20px #6757e844}.tag{font-size:12px;color:var(--muted);background:#fff;padding:9px 13px;border-radius:30px;border:1px solid #ecebfa}
+.hero{position:relative;overflow:hidden;border-radius:28px;padding:32px;color:#fff;background:linear-gradient(115deg,#6656e8,#8b61e8 52%,#f36fa7);box-shadow:0 16px 35px #7664d833}.hero:after{content:"Aa";position:absolute;right:5%;top:-30px;font-weight:1000;font-size:190px;color:#ffffff18;transform:rotate(-12deg)}.hero h1{font-size:clamp(28px,5vw,46px);line-height:1.05;margin:8px 0 12px;max-width:650px}.hero p{max-width:600px;line-height:1.55;color:#f4efff;margin:0 0 20px}.eyebrow{text-transform:uppercase;font-size:11px;letter-spacing:2px;font-weight:800;color:#fffbd1}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.btn{padding:12px 18px;border-radius:14px;font-weight:800;transition:.15s}.btn:hover{transform:translateY(-2px)}.primary{background:var(--yellow);color:#40345e}.ghost{background:#ffffff20;color:#fff;border:1px solid #ffffff55}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:18px 0}.stat{background:#fff;border:1px solid #eeecfb;border-radius:18px;padding:16px;box-shadow:0 5px 18px #4a3a8210}.stat strong{display:block;font-size:25px}.stat span{font-size:12px;color:var(--muted)}
+.section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:26px 2px 13px}.section-title h2{font-size:22px;margin:0}.section-title small{color:var(--muted)}
+.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.module{background:var(--card);border:1px solid #eeecfb;border-radius:22px;padding:18px;box-shadow:0 7px 20px #4a3a820b;display:flex;gap:14px;align-items:flex-start}.module .ico{width:54px;height:54px;flex:none;border-radius:17px;display:grid;place-items:center;font-size:26px}.module h3{margin:2px 0 6px;font-size:17px}.module p{margin:0 0 12px;color:var(--muted);font-size:13px;line-height:1.4}.module button{background:#f0efff;color:#5748cf;border-radius:11px;padding:9px 13px;font-weight:800;font-size:13px}.module button:disabled{opacity:.55;cursor:not-allowed}
+.progressbox{background:#fff;border:1px solid #eeecfb;border-radius:20px;padding:17px;margin-top:16px}.progressline{height:10px;background:#eeedfa;border-radius:20px;overflow:hidden;margin-top:10px}.progressline div{height:100%;background:linear-gradient(90deg,var(--blue),var(--purple),var(--pink));width:0%;transition:.3s}
+.panel{display:none;background:#fff;border:1px solid #ecebfa;border-radius:25px;padding:24px;margin-top:18px;box-shadow:0 10px 28px #4a3a8210}.panel.active{display:block}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px}.back{background:#f2f1fb;color:#5d54a8;padding:9px 13px;border-radius:12px;font-weight:800}.pill{font-size:11px;font-weight:900;color:#6757e8;background:#f0efff;padding:7px 10px;border-radius:30px}.question{margin:24px 0 16px;text-align:center}.question .word{font-size:clamp(30px,6vw,48px);font-weight:950;letter-spacing:.3px;margin:8px}.question p{color:var(--muted);margin:4px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:11px;max-width:650px;margin:18px auto}.answer{padding:16px;border:2px solid #ecebfa;background:#fff;border-radius:16px;font-size:18px;font-weight:850;color:var(--ink)}.answer:hover{border-color:#9a8df5;background:#faf9ff}.answer.correct{border-color:var(--green);background:#eafff7}.answer.wrong{border-color:#ff7593;background:#fff0f4}.feedback{min-height:48px;text-align:center;font-weight:800;padding:10px;color:var(--muted)}.center{text-align:center}.next{background:linear-gradient(100deg,var(--purple),#9365e9);color:#fff;padding:13px 22px;border-radius:14px;font-weight:900}.listen{background:#eaf7ff;color:#1479ad;padding:10px 14px;border-radius:12px;font-weight:800}
+.finalscore{font-size:46px;font-weight:1000;color:var(--purple)}.certificate{border:7px double #8274e9;border-radius:20px;padding:28px;text-align:center;background:linear-gradient(135deg,#fff,#fff9e8);margin:18px 0}.certificate h2{color:#6757e8;font-size:26px}.certificate input{border:0;border-bottom:2px solid #aaa;background:transparent;padding:8px;font:inherit;text-align:center;width:min(100%,340px);outline:none}.footer{text-align:center;color:#9995b1;font-size:11px;padding:26px 8px}.notice{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}
+@media(max-width:650px){.wrap{padding:14px}.hero{padding:24px 20px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:21px}.modules{grid-template-columns:1fr}.module{padding:15px}.panel{padding:17px}.answers{grid-template-columns:1fr}.tag{display:none}}
+@media print{body{background:#fff}.top,.hero,.stats,.section-title,.modules,.progressbox,.panelhead,.notice,.footer,.back,.next{display:none!important}.panel{display:block!important;border:0;box-shadow:none}.certificate{margin:40px auto;max-width:750px;min-height:440px;display:flex;flex-direction:column;justify-content:center}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand"><div class="logo">И!</div><div>ИГРАмматика<br><span style="font-size:12px;color:#85839f;font-weight:700">РЕЧЕВОЙ АПГРЕЙД</span></div></div><div class="tag">DIGITAL TRAINER · 5–8 КЛАССЫ</div></header>
+<section class="hero" id="hero">
+<div class="eyebrow">Твоя речь — твоя суперсила</div>
+<h1>Говори красиво.<br>ЗвучИ уверенно!</h1>
+<p>Прокачай орфоэпическую грамотность: слушай, выбирай, находи ошибки и проходи речевые испытания.</p>
+<div class="hero-actions"><button class="btn primary" onclick="document.getElementById('modulesTitle').scrollIntoView({behavior:'smooth'})">Начать тренировку →</button><button class="btn ghost" onclick="resetProgress()">Сбросить прогресс</button></div>
+</section>
+<div class="stats">
+<div class="stat"><strong id="totalScore">0</strong><span>Набрано баллов</span></div>
+<div class="stat"><strong id="completed">0/5</strong><span>Пройдено модулей</span></div>
+<div class="stat"><strong id="rank">Новичок</strong><span>Твой уровень</span></div>
+</div>
+<div class="section-title" id="modulesTitle"><h2>Выбери испытание</h2><small>Каждый модуль — новый уровень</small></div>
+<div class="modules" id="modules">
+<div class="module"><div class="ico" style="background:#fff0f5">👂</div><div><h3>1. Услышь ошибку</h3><p>Определи, где слово произнесено с нарушением нормы.</p><button onclick="startModule(0)">Начать →</button></div></div>
+<div class="module"><div class="ico" style="background:#fff8df">⚡</div><div><h3>2. Ударный вызов</h3><p>Выбери правильный вариант ударения.</p><button onclick="startModule(1)">Начать →</button></div></div>
+<div class="module"><div class="ico" style="background:#eaf8ff">🕵️</div><div><h3>3. Орфоэпический детектив</h3><p>Найди речевую ошибку в предложении.</p><button onclick="startModule(2)">Начать →</button></div></div>
+<div class="module"><div class="ico" style="background:#edfff8">🎙️</div><div><h3>4. Дикторский вызов</h3><p>Прослушай нормативное произношение и потренируйся.</p><button onclick="startModule(3)">Начать →</button></div></div>
+<div class="module"><div class="ico" style="background:#f0edff">🏆</div><div><h3>5. Финальный апгрейд</h3><p>Итоговое испытание на все навыки.</p><button onclick="startModule(4)">Начать →</button></div></div>
+</div>
+<div class="progressbox"><div style="display:flex;justify-content:space-between;gap:10px"><b>Твой речевой прогресс</b><span id="progressText" style="color:#777;font-size:13px">0%</span></div><div class="progressline"><div id="progressBar"></div></div></div>
+<section class="panel" id="game">
+<div class="panelhead"><button class="back" onclick="closeGame()">← К модулям</button><span class="pill" id="modulePill">МОДУЛЬ</span></div>
+<div class="question"><p id="instruction">Выбери ответ</p><div class="word" id="prompt">Звонит</div><button class="listen" id="listenBtn" onclick="speakCurrent()">🔊 Прослушать</button></div>
+<div class="answers" id="answers"></div>
+<div class="feedback" id="feedback">Выбери один вариант ответа</div>
+<div class="center"><button class="next" id="nextBtn" onclick="nextQuestion()" disabled>Далее →</button></div>
+<div class="notice">Подсказка: после ответа внимательно прочитай объяснение и запомни нормативное произношение.</div>
+</section>
+<section class="panel" id="result">
+<div class="panelhead"><button class="back" onclick="closeResult()">← К модулям</button><span class="pill">РЕЗУЛЬТАТ</span></div>
+<div class="center"><div style="font-size:48px">✨</div><h2 id="resultTitle">Модуль пройден!</h2><div class="finalscore" id="moduleScore">0/5</div><p id="resultText">Продолжай тренироваться!</p><button class="next" onclick="closeResult()">Продолжить →</button></div>
+</section>
+<section class="panel" id="certificatePanel">
+<div class="panelhead"><button class="back" onclick="closeCertificate()">← К модулям</button><span class="pill">НАГРАДА</span></div>
+<div class="certificate"><div style="width:76px;height:76px;margin:0 auto 8px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#fff2b8,#f2c75b);border:4px solid #d5a83f;box-shadow:0 0 0 5px #fff7dc;color:#76521b;font-size:40px">★</div><div style="letter-spacing:3px;color:#8b80cf;font-weight:900">ИГРАММАТИКА · РЕЧЕВОЙ АПГРЕЙД</div><h2>СЕРТИФИКАТ</h2><p>награждается</p><input id="studentName" placeholder="Имя и фамилия участника"><p>за прохождение цифрового тренажёра<br><b>«Речевой навигатор»</b></p><h3 id="certRank">Мастер красивой речи</h3><p style="color:#8a83ae">Тренируйся говорить грамотно и уверенно!</p></div>
+<div class="center"><button class="next" onclick="window.print()">Распечатать / сохранить PDF</button></div>
+</section>
+<div class="center" style="margin-top:18px"><button class="btn" style="background:#fff;color:#6757e8;border:1px solid #e8e5fa" onclick="openCertificate()">🎓 Мой сертификат</button></div>
+<div class="footer">Авторский образовательный продукт школьного проекта «ИГРАмматика: Речевой апгрейд» · Демонстрационная версия</div>
+</div>
+<script>
+const data=[
+{title:"Услышь ошибку",instruction:"Выбери вариант, в котором ударение поставлено НЕПРАВИЛЬНО.",items:[
+{q:"ЗвонИт",a:["звонИт","звОнит"],c:1,e:"Нормативно: звонИ́т. Ударение на последний слог."},
+{q:"ТОрты",a:["тОрты","тортЫ"],c:1,e:"Нормативно: то́рты. Ударение сохраняется на первом слоге."},
+{q:"КаталОг",a:["катАлог","каталОг"],c:0,e:"Нормативно: катало́г. Ударение на последний слог."},
+{q:"СвЁкла",a:["свЁкла","свеклА"],c:1,e:"Нормативно: свёкла. Вариант «свекла́» ненормативен."},
+{q:"КрасИвее",a:["красИвее","красивЕе"],c:1,e:"Нормативно: краси́вее."}]},
+{title:"Ударный вызов",instruction:"Выбери правильный вариант ударения.",items:[
+{q:"Звонить",a:["звонИть","звОнить"],c:0,e:"Правильно: звонИ́ть."},
+{q:"Договор",a:["дОговор","договОр"],c:1,e:"Правильно: догово́р."},
+{q:"Щавель",a:["щАвель","щавЕль"],c:1,e:"Правильно: щаве́ль."},
+{q:"Банты",a:["бАнты","бантЫ"],c:0,e:"Правильно: ба́нты."},
+{q:"Средства",a:["срЕдства","средствА"],c:0,e:"Правильно: сре́дства."}]},
+{title:"Орфоэпический детектив",instruction:"Найди слово с неправильным ударением.",items:[
+{q:"Мы купили",a:["красивые тОрты","свежий щавЕль"],c:1,e:"Ошибка во втором варианте: правильно щаве́ль."},
+{q:"В магазине",a:["новые каталОги","удобные бАнты"],c:0,e:"Ошибка в первом варианте: правильно катало́ги."},
+{q:"На уроке",a:["звонИт телефон","дОговор подписан"],c:1,e:"Ошибка во втором варианте: правильно догово́р."},
+{q:"В саду",a:["посадили свЁклу","купили красивЕе платье"],c:1,e:"Ошибка во втором варианте: правильно краси́вее."},
+{q:"На столе",a:["срЕдства для уборки","средствА защиты"],c:1,e:"В данном значении правильно: сре́дства."}]},
+{title:"Дикторский вызов",instruction:"Послушай слово, затем выбери нормативное произношение.",items:[
+{q:"Облегчить",a:["облЕгчить","облегчИть"],c:1,e:"Правильно: облегчИ́ть. Повтори слово вслух."},
+{q:"Сосредоточение",a:["сосредотОчение","сосредоточЕние"],c:0,e:"Правильно: сосредотО́чение. Ударение на слог «то»."},
+{q:"Квартал",a:["квАртал","квартАл"],c:1,e:"Правильно: квартА́л."},
+{q:"Аэропорты",a:["аэропОрты","аэропортЫ"],c:0,e:"Правильно: аэропо́рты."},
+{q:"Начался",a:["начАлся","началсЯ"],c:0,e:"Правильно: нача́лся."}]},
+{title:"Финальный апгрейд",instruction:"Финальное испытание: выбери правильный вариант.",items:[
+{q:"Жалюзи",a:["жАлюзи","жалюзИ"],c:1,e:"Правильно: жалюзи́."},
+{q:"Эксперт",a:["экспЕрт","Э́ксперт"],c:0,e:"Правильно: экспЕ́рт. Ударение на второй слог."},
+{q:"Туфли",a:["тУфля","тУфли"],c:1,e:"Правильно: ту́фли."},
+{q:"Принудить",a:["принУдить","принудИть"],c:1,e:"Правильно: принуди́ть."},
+{q:"Красивый",a:["красИвый","красивЫй"],c:0,e:"Правильно: краси́вый."}]}
+];
+let current=0, qi=0, score=0, chosen=false;
+let state=JSON.parse(localStorage.getItem("igraProgress")||'{"score":0,"done":[]}');
+function save(){localStorage.setItem("igraProgress",JSON.stringify(state));updateStats()}
+function updateStats(){document.getElementById("totalScore").textContent=state.score;document.getElementById("completed").textContent=state.done.length+"/5";let p=Math.round(state.done.length/5*100);document.getElementById("progressText").textContent=p+"%";document.getElementById("progressBar").style.width=p+"%";document.getElementById("rank").textContent=state.score>=22?"Мастер речи":state.score>=12?"Знаток":"Новичок"}
+function hidePanels(){["game","result","certificatePanel"].forEach(x=>document.getElementById(x).classList.remove("active"))}
+function startModule(n){current=n;qi=0;score=0;chosen=false;hidePanels();document.getElementById("game").classList.add("active");document.getElementById("hero").style.display="none";document.getElementById("modules").style.display="none";document.querySelector(".progressbox").style.display="none";document.querySelector(".section-title").style.display="none";renderQuestion();document.getElementById("game").scrollIntoView({behavior:"smooth"})}
+function renderQuestion(){let item=data[current].items[qi];document.getElementById("modulePill").textContent="МОДУЛЬ "+(current+1)+" · "+(qi+1)+"/5";document.getElementById("instruction").textContent=data[current].instruction;document.getElementById("prompt").textContent=item.q;document.getElementById("feedback").textContent="Выбери один вариант ответа";document.getElementById("nextBtn").disabled=true;document.getElementById("nextBtn").textContent=qi===4?"Завершить модуль":"Следующее задание →";let box=document.getElementById("answers");box.innerHTML="";item.a.forEach((a,i)=>{let b=document.createElement("button");b.className="answer";b.textContent=a;b.onclick=()=>choose(i);box.appendChild(b)});chosen=false}
+function choose(i){if(chosen)return;chosen=true;let item=data[current].items[qi],buttons=[...document.querySelectorAll(".answer")];buttons.forEach((b,j)=>{if(j===item.c)b.classList.add("correct");else if(j===i)b.classList.add("wrong");b.disabled=true});let ok=i===item.c;if(ok)score++;document.getElementById("feedback").textContent=(ok?"Верно! ⭐ ":"Попробуй запомнить. ")+item.e;document.getElementById("nextBtn").disabled=false}
+function nextQuestion(){if(!chosen)return;if(qi<4){qi++;renderQuestion()}else{state.score+=score; if(!state.done.includes(current))state.done.push(current);save();document.getElementById("game").classList.remove("active");document.getElementById("result").classList.add("active");document.getElementById("moduleScore").textContent=score+"/5";document.getElementById("resultTitle").textContent=score>=4?"Превосходно!":"Модуль завершён!";document.getElementById("resultText").textContent=score===5?"Безупречный результат! Ты настоящий мастер речи.":score>=3?"Хорошая работа! Повтори слова, в которых ошибся.":"Не останавливайся: повтори модуль и закрепи знания.";document.getElementById("result").scrollIntoView({behavior:"smooth"})}}
+function speakCurrent(){let t=data[current].items[qi].q;if(!("speechSynthesis"in window)){alert("Озвучивание не поддерживается этим браузером.");return}let u=new SpeechSynthesisUtterance(t);u.lang="ru-RU";u.rate=.82;speechSynthesis.cancel();speechSynthesis.speak(u)}
+function closeGame(){hidePanels();showHome()}function closeResult(){hidePanels();showHome()}function showHome(){document.getElementById("hero").style.display="block";document.getElementById("modules").style.display="grid";document.querySelector(".progressbox").style.display="block";document.querySelector(".section-title").style.display="flex";document.getElementById("modulesTitle").scrollIntoView({behavior:"smooth"})}
+function openCertificate(){hidePanels();document.getElementById("certificatePanel").classList.add("active");let r=state.score>=22?"Мастер красивой речи":state.score>=12?"Знаток орфоэпии":"Начинающий исследователь речи";document.getElementById("certRank").textContent=r;document.getElementById("certificatePanel").scrollIntoView({behavior:"smooth"})}
+function closeCertificate(){hidePanels();showHome()}
+function resetProgress(){if(confirm("Сбросить все результаты тренажёра?")){state={score:0,done:[]};save()}}
+updateStats();
+</script>
+</body></html>
